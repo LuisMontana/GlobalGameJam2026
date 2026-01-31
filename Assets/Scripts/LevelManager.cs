@@ -45,7 +45,6 @@ public class LevelManager : MonoBehaviour
         }
        
         _currentClient.transform.position = target;
-        Debug.Log(isExit);
 
         OnArrived(isExit);
     }
@@ -56,11 +55,8 @@ public class LevelManager : MonoBehaviour
         hasArrived = true;
 
         _isDescriptionDisabled = true;
-        SetButtonsEnabled(true);
-        Debug.Log(isExit);
         if (isExit)
         {
-            Debug.Log("que pedos!");
             currentClientIndex++;
             if (currentClientIndex >= clients.Length)
             {
@@ -73,6 +69,10 @@ public class LevelManager : MonoBehaviour
                 hasArrived = false;
                 StartCoroutine(MoveObject(midPosition));
             }
+        }
+        else
+        {
+            SetButtonsEnabled(true);
         }
     }
     
