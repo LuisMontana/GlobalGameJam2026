@@ -4,24 +4,33 @@ using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
-    private bool _areMasksDisabled = true;
+    [Header("External Managers")]
+    [SerializeField] private UIManager uiManager;
 
-    private bool _isDescriptionDisabled = true;
-    private string _currentClientDisposition;
-    private int _currentStress = 0;
-    private int _maxStress = 0;
-    private GameObject _currentClient;
-    private int currentClientIndex = 0;
-    [SerializeField] private GameObject maskButtons;
-    
+    [Header("Client Setup")]
     [SerializeField] private GameObject[] clients;
-    
     [SerializeField] private Vector3 startPosition = new(4.5f, 0.5f, -7f);
     [SerializeField] private Vector3 midPosition = new(0f, 0.5f, -7f);
     [SerializeField] private Vector3 endPosition = new(-4.5f, 0.5f, -7f);
-    [SerializeField] private float moveSpeed = 3f;
+    [SerializeField] private float clientMoveSpeed = 3f;
+    [Header("Stress Bar Values")]
+    [SerializeField] private float singleIncreaseValue = 0.1f;
+    [SerializeField] private float singleDecreaseValue = 0.05f;
+    [SerializeField] private float multiIncreaseValue = 0.2f;
+    [SerializeField] private float multiDecreaseValue = 0.15f;
+    
+    private float _currentStress = 0f;
+    private const float MaxStress = 1f;
+    private int negativeAnswersInRow = 0;
+    private int positiveAnswersInRow = 0;
+    
+    
+    private int currentClientIndex = 0;
+    private string _currentClientDisposition;
+    private GameObject _currentClient;
+    
 
-    private bool hasArrived;
+    private bool _clientStoppedMoving;
     
     void Start()
     {
@@ -38,7 +47,7 @@ public class LevelManager : MonoBehaviour
             _currentClient.transform.position = Vector3.MoveTowards(
                 _currentClient.transform.position,
             target,
-            moveSpeed * Time.deltaTime
+            clientMoveSpeed * Time.deltaTime
             );
 
             yield return null;
@@ -51,10 +60,9 @@ public class LevelManager : MonoBehaviour
 
     private void OnArrived(bool isExit = false)
     {
-        if (hasArrived) return;
-        hasArrived = true;
+        if (_clientStoppedMoving) return;
+        _clientStoppedMoving = true;
 
-        _isDescriptionDisabled = true;
         if (isExit)
         {
             currentClientIndex++;
@@ -66,37 +74,36 @@ public class LevelManager : MonoBehaviour
             {
                 Destroy(_currentClient);
                 _currentClient = Instantiate(clients[currentClientIndex], startPosition, Quaternion.identity);
-                hasArrived = false;
+                _clientStoppedMoving = false;
                 StartCoroutine(MoveObject(midPosition));
             }
         }
         else
         {
-            SetButtonsEnabled(true);
+            uiManager.ToggleMaskButtons(true);
         }
     }
     
-    void SetButtonsEnabled(bool newValue)
-    {
-        Button[] buttons = maskButtons.GetComponentsInChildren<Button>(true);
-        foreach (Button button in buttons)
-        {
-            button.interactable = newValue;
-        }
-    }
 
     public void CheckCompatibility(string userDisposition)
     {
-        hasArrived = false;
+        _clientStoppedMoving = false;
         if (userDisposition == _currentClientDisposition)
         {
-            Debug.Log("Bien!");
+            if (negativeAnswersInRow > 0) negativeAnswersInRow = 0;
+            float stressReduction = positiveAnswersInRow > 2 ? multiDecreaseValue : singleDecreaseValue;
+            _currentStress -= stressReduction;
+            if(_currentStress < 0 ) _currentStress = 0;
         }
         else
         {
-            Debug.Log("Mal!");
+            if (positiveAnswersInRow > 0) positiveAnswersInRow = 0;
+            float stressIncrease = negativeAnswersInRow > 2 ? multiIncreaseValue : singleIncreaseValue;
+            _currentStress += stressIncrease;
         }
-        SetButtonsEnabled(false);
+        
+        uiManager.UpdateStressBar(_currentStress);
+        uiManager.ToggleMaskButtons(false);
         StartCoroutine(MoveObject(endPosition, true));
     }
 

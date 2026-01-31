@@ -469,7 +469,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 1
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -700,7 +700,7 @@ GameObject:
   - component: {fileID: 5718739403549083731}
   - component: {fileID: 7193226403572118018}
   - component: {fileID: 6540337191349926174}
-  - component: {fileID: 6701017402196454186}
+  - component: {fileID: 4342278731461107551}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -791,7 +791,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &6701017402196454186
+--- !u!114 &4342278731461107551
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -800,9 +800,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5701020704218973477}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aee22086e8a1a42eda808c10a489dbf9, type: 3}
+  m_Script: {fileID: 11500000, guid: 104aa6bfeb00b49b89718918990f7b91, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::stressBarHandler
+  m_EditorClassIdentifier: Assembly-CSharp::UIManager
+  maskButtons: {fileID: 8841631541639554838}
   stressBar: {fileID: 2549962874024199473}
 --- !u!1 &6202028881327407475
 GameObject:
