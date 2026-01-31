@@ -18,6 +18,14 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private float singleDecreaseValue = 0.05f;
     [SerializeField] private float multiIncreaseValue = 0.2f;
     [SerializeField] private float multiDecreaseValue = 0.15f;
+
+    [Header("Timer Values")]
+    [SerializeField] private CameraShaker camShaker;
+    [SerializeField] private float maxTimeToSelect = 5.0f;
+    [SerializeField] private float shakeThreshold = 4.0f;
+    [SerializeField] private float currentTimeToSelect = 0.0f;
+    private bool _isShaking = false;
+    private bool _isSelectingMask = false;
     
     private float _currentStress = 0f;
     private const float MaxStress = 1f;
@@ -38,6 +46,31 @@ public class LevelManager : MonoBehaviour
         
         _currentClient = Instantiate(clients[currentClientIndex], startPosition, Quaternion.identity);
         StartCoroutine(MoveObject(midPosition));
+    }
+
+    string GetRandomOption(string[] options)
+    {
+        return options[Random.Range(0, options.Length)];
+    }
+    
+    void Update()
+    {
+        if (_isSelectingMask)
+        {
+            currentTimeToSelect += Time.deltaTime;
+            if (currentTimeToSelect > shakeThreshold && !_isShaking)
+            {
+                _isShaking = true;
+                camShaker.StartContinuousShake();
+            }
+            if (currentTimeToSelect > maxTimeToSelect)
+            {
+                string[] dispositions = { "Happy", "Neutral", "Angry" };
+                string picked = GetRandomOption(dispositions);
+                CheckCompatibility(picked);
+            }
+            uiManager.UpdateTimer(1f - (currentTimeToSelect / maxTimeToSelect));
+        }
     }
 
     private IEnumerator MoveObject(Vector3 target, bool isExit = false)
@@ -80,6 +113,9 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
+            _isSelectingMask = true;
+            currentTimeToSelect = 0.0f;
+            uiManager.UpdateTimer(1f);
             uiManager.ToggleMaskButtons(true);
         }
     }
@@ -104,6 +140,9 @@ public class LevelManager : MonoBehaviour
         
         uiManager.UpdateStressBar(_currentStress);
         uiManager.ToggleMaskButtons(false);
+        _isSelectingMask = false;
+        _isShaking = false;
+        camShaker.StopShake();
         StartCoroutine(MoveObject(endPosition, true));
     }
 

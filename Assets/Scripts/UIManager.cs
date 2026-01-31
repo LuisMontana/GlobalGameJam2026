@@ -5,7 +5,13 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private GameObject maskButtons;
     [SerializeField] private Image stressBar;
+    [SerializeField] private Image timerBar;
 
+    public void UpdateTimer(float value)
+    {
+        timerBar.fillAmount = value;
+    }
+    
     public void UpdateStressBar(float newValue)
     {
         Debug.Log(stressBar.name + ": " + stressBar.fillAmount);
