@@ -17,7 +17,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject[] clients;
     
     [SerializeField] private Vector3 startPosition = new(4.5f, 0.5f, -7f);
-    [SerializeField] private Vector3 targetPosition = new(0f, 0.5f, -7f);
+    [SerializeField] private Vector3 midPosition = new(0f, 0.5f, -7f);
+    [SerializeField] private Vector3 endPosition = new(-4.5f, 0.5f, -7f);
     [SerializeField] private float moveSpeed = 3f;
 
     private bool hasArrived;
@@ -27,34 +28,52 @@ public class LevelManager : MonoBehaviour
         _currentClientDisposition = clients[0].GetComponent<ClientInfo>().GetClientDisposition();
         
         _currentClient = Instantiate(clients[currentClientIndex], startPosition, Quaternion.identity);
-        StartCoroutine(MoveObject());
+        StartCoroutine(MoveObject(midPosition));
     }
 
-    private IEnumerator MoveObject()
+    private IEnumerator MoveObject(Vector3 target, bool isExit = false)
     {
-        while (Vector3.Distance(_currentClient.transform.position, targetPosition) > 0.01f)
+        while (Vector3.Distance(_currentClient.transform.position, target) > 0.01f)
         {
             _currentClient.transform.position = Vector3.MoveTowards(
                 _currentClient.transform.position,
-            targetPosition,
+            target,
             moveSpeed * Time.deltaTime
             );
 
             yield return null;
         }
        
-        _currentClient.transform.position = targetPosition;
+        _currentClient.transform.position = target;
+        Debug.Log(isExit);
 
-        OnArrived();
+        OnArrived(isExit);
     }
 
-    private void OnArrived()
+    private void OnArrived(bool isExit = false)
     {
         if (hasArrived) return;
         hasArrived = true;
 
         _isDescriptionDisabled = true;
         SetButtonsEnabled(true);
+        Debug.Log(isExit);
+        if (isExit)
+        {
+            Debug.Log("que pedos!");
+            currentClientIndex++;
+            if (currentClientIndex >= clients.Length)
+            {
+                Debug.Log("End of game!");
+            }
+            else
+            {
+                Destroy(_currentClient);
+                _currentClient = Instantiate(clients[currentClientIndex], startPosition, Quaternion.identity);
+                hasArrived = false;
+                StartCoroutine(MoveObject(midPosition));
+            }
+        }
     }
     
     void SetButtonsEnabled(bool newValue)
@@ -66,9 +85,20 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void CheckCompatibility(string userDisposition)
     {
-        
+        hasArrived = false;
+        if (userDisposition == _currentClientDisposition)
+        {
+            Debug.Log("Bien!");
+        }
+        else
+        {
+            Debug.Log("Mal!");
+        }
+        SetButtonsEnabled(false);
+        StartCoroutine(MoveObject(endPosition, true));
     }
+
+    
 }
