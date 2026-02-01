@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using TMPro;
 using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
@@ -9,9 +10,9 @@ public class LevelManager : MonoBehaviour
 
     [Header("Client Setup")]
     [SerializeField] private GameObject[] clients;
-    public Vector3 startPosition = new(4.5f, 0.5f, -7f);
-    public Vector3 midPosition = new(0f, 0.5f, -7f);
-    public Vector3 endPosition = new(-4.5f, 0.5f, -7f);
+    public Vector3 startPosition = new(4.5f, -1.5f, -7f);
+    public Vector3 midPosition = new(0f, -1.5f, -7f);
+    public Vector3 endPosition = new(-4.5f, -1.5f, -7f);
     public float clientMoveSpeed = 3f;
     [Header("Stress Bar Values")]
     [SerializeField] private float singleIncreaseValue = 0.1f;
@@ -27,6 +28,14 @@ public class LevelManager : MonoBehaviour
     private bool _isShaking = false;
     private bool _isSelectingMask = false;
 
+    [Header("Paper Values")]
+    [SerializeField] private GameObject paperHolder;
+    [SerializeField] private TextMeshProUGUI nameText;
+    [SerializeField] private TextMeshProUGUI incomeText;
+    [SerializeField] private TextMeshProUGUI expensesText;
+    [SerializeField] private TextMeshProUGUI percentageText;
+    
+    
     private float _currentStress = 0f;
     private const float MaxStress = 1f;
     private int negativeAnswersInRow = 0;
@@ -45,6 +54,7 @@ public class LevelManager : MonoBehaviour
         _currentClientDisposition = clients[0].GetComponent<ClientInfo>().clientDisposition;
 
         _currentClient = Instantiate(clients[currentClientIndex], startPosition, Quaternion.identity);
+        Debug.Log(_currentClient.transform.position + " " + startPosition);
         GenerateRandomUserStats();
         StartCoroutine(MoveObject(midPosition));
     }
@@ -119,10 +129,17 @@ public class LevelManager : MonoBehaviour
         cf.expenses = Random.Range(1, 100);
         cf.income = Random.Range(1, 100);
         cf.percentageSuccesfulLoans = Random.Range(1, 100);
+
+        
         cf.charName = cf.sex == "F"
             ? femaleNames[Random.Range(0, femaleNames.Length)]
             : maleNames[Random.Range(0, maleNames.Length)];
         cf.gameObject.name = cf.charName;
+        
+        nameText.text = cf.charName;
+        expensesText.text = "" + cf.expenses;
+        incomeText.text = "" + cf.income;
+        percentageText.text = "" + cf.percentageSuccesfulLoans;
         
         _currentClientDisposition = picked;
     }
@@ -166,6 +183,12 @@ public class LevelManager : MonoBehaviour
         }
 
     }
+
+    public void TogglePaper()
+    {
+        paperHolder.SetActive(!paperHolder.activeSelf);
+    }
+    
     public float getStressValue()
     {
         return _currentStress;

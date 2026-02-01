@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1a958def054e3c34b94d29ae0c6496d3, type: 3}
       propertyPath: m_LocalScale.x
-      value: 5.5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1a958def054e3c34b94d29ae0c6496d3, type: 3}
       propertyPath: m_LocalScale.y
-      value: 5.5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1a958def054e3c34b94d29ae0c6496d3, type: 3}
       propertyPath: m_LocalScale.z
-      value: 5.5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1a958def054e3c34b94d29ae0c6496d3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1335,6 +1335,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClientInfo
   clientDisposition: angry
+  sex: 
+  percentageSuccesfulLoans: 0
+  income: 0
+  expenses: 0
+  charName: 
 --- !u!4 &5757454286124695945 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 882335638797273989, guid: 1a958def054e3c34b94d29ae0c6496d3, type: 3}
