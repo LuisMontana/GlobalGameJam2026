@@ -25,7 +25,7 @@ public class LevelManager : MonoBehaviour
     
     void Start()
     {
-        _currentClientDisposition = clients[0].GetComponent<ClientInfo>().GetClientDisposition();
+        // _currentClientDisposition = clients[0].GetComponent<ClientInfo>().GetClientDisposition();
         
         _currentClient = Instantiate(clients[currentClientIndex], startPosition, Quaternion.identity);
         StartCoroutine(MoveObject(midPosition));
