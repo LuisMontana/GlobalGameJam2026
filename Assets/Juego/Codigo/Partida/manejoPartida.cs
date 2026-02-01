@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
+
 
 public class manejoPartida : MonoBehaviour
 {
@@ -30,11 +32,21 @@ public class manejoPartida : MonoBehaviour
     }
     void Update()
     {
-        
+        if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
+            Quitar_Juego();
+        }
     }
     void FixedUpdate()
     {
         _ManejoNivel.enabled = _ManejoPersonaje.enPuestAsesr;
         _ManejoPersonaje.enMascaras = _ManejoNivel._clientStoppedMoving;
+    }
+    
+    
+
+    public void Quitar_Juego()
+    {
+        Application.Quit();
     }
 }
