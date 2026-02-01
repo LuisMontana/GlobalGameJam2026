@@ -12,7 +12,14 @@ public class StartMenuScript : MonoBehaviour
     [SerializeField] private int sceneId;
     [SerializeField] private string videoFileName;
 
+    public AudioClip[] SFX;
+    public AudioSource sourceSFX;
     void Start()
+    {
+      
+    }
+
+    private void Awake()
     {
         PlayVideo();
     }
@@ -45,5 +52,11 @@ public class StartMenuScript : MonoBehaviour
             videoPlayer.Play();
 
         }
+    }
+
+    public void PlaySFX(int soundIndex)
+    {
+        sourceSFX.PlayOneShot(SFX[soundIndex]);
+        Debug.Log("You're hearing: ",SFX[soundIndex]);
     }
 }
