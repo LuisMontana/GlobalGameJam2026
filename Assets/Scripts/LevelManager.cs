@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
@@ -9,10 +9,10 @@ public class LevelManager : MonoBehaviour
 
     [Header("Client Setup")]
     [SerializeField] private GameObject[] clients;
-    [SerializeField] private Vector3 startPosition = new(4.5f, 0.5f, -7f);
-    [SerializeField] private Vector3 midPosition = new(0f, 0.5f, -7f);
-    [SerializeField] private Vector3 endPosition = new(-4.5f, 0.5f, -7f);
-    [SerializeField] private float clientMoveSpeed = 3f;
+    public Vector3 startPosition = new(4.5f, 0.5f, -7f);
+    public Vector3 midPosition = new(0f, 0.5f, -7f);
+    public Vector3 endPosition = new(-4.5f, 0.5f, -7f);
+    public float clientMoveSpeed = 3f;
     [Header("Stress Bar Values")]
     [SerializeField] private float singleIncreaseValue = 0.1f;
     [SerializeField] private float singleDecreaseValue = 0.05f;
@@ -33,19 +33,18 @@ public class LevelManager : MonoBehaviour
     private int positiveAnswersInRow = 0;
 
 
-    [SerializeField] private int currentClientIndex = 0;
+    private int currentClientIndex = 0;
     private string _currentClientDisposition;
     private GameObject _currentClient;
 
 
-    private bool _clientStoppedMoving;
+    public bool _clientStoppedMoving;
 
     void Start()
     {
-        Debug.Log("start");
         _currentClientDisposition = clients[0].GetComponent<ClientInfo>().GetClientDisposition();
 
-        _currentClient = Instantiate(clients[currentClientIndex], startPosition, Quaternion.Euler(0f, 180f, 0f));
+        _currentClient = Instantiate(clients[currentClientIndex], startPosition, Quaternion.identity);
         StartCoroutine(MoveObject(midPosition));
     }
 
@@ -78,7 +77,6 @@ public class LevelManager : MonoBehaviour
     {
         while (Vector3.Distance(_currentClient.transform.position, target) > 0.01f)
         {
-
             _currentClient.transform.position = Vector3.MoveTowards(
                 _currentClient.transform.position,
             target,
@@ -108,7 +106,7 @@ public class LevelManager : MonoBehaviour
             else
             {
                 Destroy(_currentClient);
-                _currentClient = Instantiate(clients[currentClientIndex], startPosition, Quaternion.Euler(0f, 180f, 0f));
+                _currentClient = Instantiate(clients[currentClientIndex], startPosition, Quaternion.identity);
                 _clientStoppedMoving = false;
                 StartCoroutine(MoveObject(midPosition));
             }
@@ -124,7 +122,8 @@ public class LevelManager : MonoBehaviour
 
     public void updateStressValue(float value)//La variable value debe ser un n�mero real entre [-1,1]
     {
-        if (value > -1 && value < 1) {
+        if (value > -1 && value < 1)
+        {
             _currentStress += value;
         }
 
@@ -142,16 +141,15 @@ public class LevelManager : MonoBehaviour
             if (negativeAnswersInRow > 0) negativeAnswersInRow = 0;
             float stressReduction = positiveAnswersInRow > 2 ? multiDecreaseValue : singleDecreaseValue;
             _currentStress -= stressReduction;
-            if(_currentStress < 0 ) _currentStress = 0;
+            if (_currentStress < 0) _currentStress = 0;
         }
         else
         {
             if (positiveAnswersInRow > 0) positiveAnswersInRow = 0;
             float stressIncrease = negativeAnswersInRow > 2 ? multiIncreaseValue : singleIncreaseValue;
             _currentStress += stressIncrease;
-            
         }
-        
+
         uiManager.UpdateStressBar(_currentStress);
         uiManager.ToggleMaskButtons(false);
         _isSelectingMask = false;
@@ -159,6 +157,4 @@ public class LevelManager : MonoBehaviour
         camShaker.StopShake();
         StartCoroutine(MoveObject(endPosition, true));
     }
-
-    
 }
