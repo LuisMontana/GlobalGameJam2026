@@ -15,7 +15,7 @@ MonoBehaviour:
   showOnStartup: 0
   ignoreAllErrors: 0
   checkForUpdates: 1
-  updateWindowShownOnce: 1
+  updateWindowShownOnce: 0
   postInstallShowUpdateWindow: 0
   postInstallShowPopupNotWindow: 0
   criticalUpdateRequired: 0
