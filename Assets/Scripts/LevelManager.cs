@@ -33,7 +33,7 @@ public class LevelManager : MonoBehaviour
     private int positiveAnswersInRow = 0;
 
 
-    private int currentClientIndex = 0;
+    [SerializeField] private int currentClientIndex = 0;
     private string _currentClientDisposition;
     private GameObject _currentClient;
 
@@ -42,6 +42,7 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("start");
         _currentClientDisposition = clients[0].GetComponent<ClientInfo>().GetClientDisposition();
 
         _currentClient = Instantiate(clients[currentClientIndex], startPosition, Quaternion.identity);
@@ -77,6 +78,7 @@ public class LevelManager : MonoBehaviour
     {
         while (Vector3.Distance(_currentClient.transform.position, target) > 0.01f)
         {
+
             _currentClient.transform.position = Vector3.MoveTowards(
                 _currentClient.transform.position,
             target,
@@ -120,7 +122,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public void updateStressValue(float value)//La variable value debe ser un número real entre [-1,1]
+    public void updateStressValue(float value)//La variable value debe ser un nï¿½mero real entre [-1,1]
     {
         if (value > -1 && value < 1) {
             _currentStress += value;

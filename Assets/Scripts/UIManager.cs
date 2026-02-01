@@ -14,7 +14,6 @@ public class UIManager : MonoBehaviour
     
     public void UpdateStressBar(float newValue)
     {
-        Debug.Log(stressBar.name + ": " + stressBar.fillAmount);
         stressBar.fillAmount = newValue;
     }
     

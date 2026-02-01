@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -33,7 +32,6 @@ public class GameOverLogic : MonoBehaviour
     {
         _gameLost = true;
         gameOverScreen.SetActive(true);
-        Time.timeScale = 0;
     }
 
    public void restart()
