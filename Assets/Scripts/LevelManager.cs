@@ -45,7 +45,7 @@ public class LevelManager : MonoBehaviour
         Debug.Log("start");
         _currentClientDisposition = clients[0].GetComponent<ClientInfo>().GetClientDisposition();
 
-        _currentClient = Instantiate(clients[currentClientIndex], startPosition, Quaternion.identity);
+        _currentClient = Instantiate(clients[currentClientIndex], startPosition, Quaternion.Euler(0f, 180f, 0f));
         StartCoroutine(MoveObject(midPosition));
     }
 
@@ -108,7 +108,7 @@ public class LevelManager : MonoBehaviour
             else
             {
                 Destroy(_currentClient);
-                _currentClient = Instantiate(clients[currentClientIndex], startPosition, Quaternion.identity);
+                _currentClient = Instantiate(clients[currentClientIndex], startPosition, Quaternion.Euler(0f, 180f, 0f));
                 _clientStoppedMoving = false;
                 StartCoroutine(MoveObject(midPosition));
             }

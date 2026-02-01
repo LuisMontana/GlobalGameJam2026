@@ -9,6 +9,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 1a958def054e3c34b94d29ae0c6496d3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1a958def054e3c34b94d29ae0c6496d3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1a958def054e3c34b94d29ae0c6496d3, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1a958def054e3c34b94d29ae0c6496d3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -50,11 +62,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1a958def054e3c34b94d29ae0c6496d3, type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1a958def054e3c34b94d29ae0c6496d3, type: 3}
       propertyPath: m_Name
-      value: cliente2_3
+      value: angry
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 1a958def054e3c34b94d29ae0c6496d3, type: 3}
       propertyPath: m_Controller
@@ -890,7 +902,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfc016bc6260e46df801a13bacbbe94d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClientInfo
-  clientDisposition: Happy
+  clientDisposition: angry
 --- !u!4 &5757454286124695945 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 882335638797273989, guid: 1a958def054e3c34b94d29ae0c6496d3, type: 3}

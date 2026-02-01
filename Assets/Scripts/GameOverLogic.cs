@@ -21,7 +21,7 @@ public class GameOverLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if (levelManagerScript.getStressValue() >= 0.1 && _gameLost == false)
+       if (levelManagerScript.getStressValue() >= 1 && _gameLost == false)
         {
             EndGameCore();
         }
