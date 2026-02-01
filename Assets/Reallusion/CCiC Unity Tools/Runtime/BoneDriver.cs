@@ -78,7 +78,7 @@ namespace Reallusion.Runtime
 
             try
             {
-                glossary = JsonConvert.DeserializeObject<ExpressionGlossary>(glossarySetupString);
+                /*glossary = JsonConvert.DeserializeObject<ExpressionGlossary>(glossarySetupString);
                 if (constraintEnable)
                 {
                     //Debug.Log("Deserializing Constraints");
@@ -86,7 +86,7 @@ namespace Reallusion.Runtime
 
                     constraintList = fullList.FindAll(x  => x.UpdateMode == UpdateMode.Add);
                     limitList = fullList.FindAll(x => x.UpdateMode == UpdateMode.Limit);
-                }
+                }*/
             }
             catch (Exception ex)
             {
@@ -673,16 +673,16 @@ namespace Reallusion.Runtime
         public class ExpressionByBone
         {
             public string BoneName;
-            [JsonIgnore]
+            //[JsonIgnore]
             public Transform BoneTransform;
 
             // bind pose data from skeleton avatar.humanDescription.skeleton
             public float[] RefPositionArr;
             public float[] RefRotationArr;
 
-            [JsonIgnore]
+            //[JsonIgnore]
             public Vector3 RefPosition;
-            [JsonIgnore]
+            //[JsonIgnore]
             public Quaternion RefRotation;
 
             public List<Expression> Expressions;
@@ -716,9 +716,9 @@ namespace Reallusion.Runtime
             public float[] TranslateArr;
             public float[] RotationArr;
 
-            [JsonIgnore]
+            //[JsonIgnore]
             public Vector3 Translate;
-            [JsonIgnore]
+            //[JsonIgnore]
             public Quaternion Rotation;
 
             public Expression(string name, int index, bool viseme, Vector3 translate, Vector4 rotation)
