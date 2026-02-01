@@ -194,10 +194,59 @@ public class LevelManager : MonoBehaviour
         return _currentStress;
     } //Getter de la variable _currentStress
 
+    bool CheckIfCorrectMask(string userDisposition)
+    {
+        ClientInfo cf = _currentClient.GetComponent<ClientInfo>();
+        float percentageIncome = (cf.expenses / cf.income) * 100;
+        int loansApproved = cf.percentageSuccesfulLoans;
+        if (userDisposition == "happy")
+        {
+            if ((percentageIncome < 20 && loansApproved > 70)
+                || (percentageIncome > 30 && loansApproved > 50))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        if (userDisposition == "sad")
+        {
+            if ((percentageIncome > 50 && loansApproved < 50)
+                || (percentageIncome > 60 && loansApproved < 40)
+                || (percentageIncome > 80 && loansApproved < 20))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        if (userDisposition == "neutral")
+        {
+            if ((percentageIncome < 40 && loansApproved > 60)
+                || (percentageIncome > 45 && loansApproved > 50)
+                || (percentageIncome > 55 && loansApproved < 40)
+                || (percentageIncome > 65 && loansApproved < 35))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        return false;
+    }
+
     public void CheckCompatibility(string userDisposition)
     {
         _clientStoppedMoving = false;
-        if (userDisposition == _currentClientDisposition)
+        if (CheckIfCorrectMask(userDisposition))
         {
             if (negativeAnswersInRow > 0) negativeAnswersInRow = 0;
             float stressReduction = positiveAnswersInRow > 2 ? multiDecreaseValue : singleDecreaseValue;
