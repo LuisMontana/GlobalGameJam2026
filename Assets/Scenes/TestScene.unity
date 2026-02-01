@@ -742,6 +742,9 @@ MonoBehaviour:
   - {fileID: 5699675229947934557, guid: fc24b249e80c746489fab2f2a00692ea, type: 3}
   - {fileID: 5699675229947934557, guid: 183bf72cb9cba49478559299d1416528, type: 3}
   - {fileID: 5699675229947934557, guid: 5008662368eb645e287160e0b436d742, type: 3}
+  - {fileID: 99181432372781355, guid: 581e7ed7aa02e45e98dfc43c2ea5885b, type: 3}
+  - {fileID: 99181432372781355, guid: 6ec9f26c8a12a4034b7e4c450469355e, type: 3}
+  - {fileID: 99181432372781355, guid: 27199893d017f4516aef522e5bc79ecc, type: 3}
   startPosition: {x: 4.5, y: -2.2, z: -7}
   midPosition: {x: 0, y: -2.2, z: -7}
   endPosition: {x: -4.5, y: -2.2, z: -7}
