@@ -501,6 +501,28 @@ MonoBehaviour:
   - {fileID: 5699675229947934557, guid: 01ec5d8e6ef21704bb3a3fe2db96fc60, type: 3}
   - {fileID: 5699675229947934557, guid: 01ec5d8e6ef21704bb3a3fe2db96fc60, type: 3}
   - {fileID: 5699675229947934557, guid: 01ec5d8e6ef21704bb3a3fe2db96fc60, type: 3}
+  - {fileID: 5699675229947934557, guid: 01ec5d8e6ef21704bb3a3fe2db96fc60, type: 3}
+  - {fileID: 5699675229947934557, guid: 01ec5d8e6ef21704bb3a3fe2db96fc60, type: 3}
+  - {fileID: 5699675229947934557, guid: 01ec5d8e6ef21704bb3a3fe2db96fc60, type: 3}
+  - {fileID: 5699675229947934557, guid: 01ec5d8e6ef21704bb3a3fe2db96fc60, type: 3}
+  - {fileID: 5699675229947934557, guid: 01ec5d8e6ef21704bb3a3fe2db96fc60, type: 3}
+  - {fileID: 5699675229947934557, guid: 01ec5d8e6ef21704bb3a3fe2db96fc60, type: 3}
+  - {fileID: 5699675229947934557, guid: 01ec5d8e6ef21704bb3a3fe2db96fc60, type: 3}
+  - {fileID: 5699675229947934557, guid: 01ec5d8e6ef21704bb3a3fe2db96fc60, type: 3}
+  - {fileID: 5699675229947934557, guid: 01ec5d8e6ef21704bb3a3fe2db96fc60, type: 3}
+  - {fileID: 5699675229947934557, guid: 01ec5d8e6ef21704bb3a3fe2db96fc60, type: 3}
+  - {fileID: 5699675229947934557, guid: 01ec5d8e6ef21704bb3a3fe2db96fc60, type: 3}
+  - {fileID: 5699675229947934557, guid: 01ec5d8e6ef21704bb3a3fe2db96fc60, type: 3}
+  - {fileID: 5699675229947934557, guid: 01ec5d8e6ef21704bb3a3fe2db96fc60, type: 3}
+  - {fileID: 5699675229947934557, guid: 01ec5d8e6ef21704bb3a3fe2db96fc60, type: 3}
+  - {fileID: 5699675229947934557, guid: 01ec5d8e6ef21704bb3a3fe2db96fc60, type: 3}
+  - {fileID: 5699675229947934557, guid: 01ec5d8e6ef21704bb3a3fe2db96fc60, type: 3}
+  - {fileID: 5699675229947934557, guid: 01ec5d8e6ef21704bb3a3fe2db96fc60, type: 3}
+  - {fileID: 5699675229947934557, guid: 01ec5d8e6ef21704bb3a3fe2db96fc60, type: 3}
+  - {fileID: 5699675229947934557, guid: 01ec5d8e6ef21704bb3a3fe2db96fc60, type: 3}
+  - {fileID: 5699675229947934557, guid: 01ec5d8e6ef21704bb3a3fe2db96fc60, type: 3}
+  - {fileID: 5699675229947934557, guid: 01ec5d8e6ef21704bb3a3fe2db96fc60, type: 3}
+  - {fileID: 5699675229947934557, guid: 01ec5d8e6ef21704bb3a3fe2db96fc60, type: 3}
   startPosition: {x: 4.5, y: 0.5, z: -7}
   midPosition: {x: 0, y: 0.5, z: -7}
   endPosition: {x: -4.5, y: 0.5, z: -7}
@@ -4074,11 +4096,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7653598538488457082, guid: 2cd0a77f86b3d51408ffd7a183d3a3e8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6427240473849887209, guid: 2cd0a77f86b3d51408ffd7a183d3a3e8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4890829873728976492, guid: 2cd0a77f86b3d51408ffd7a183d3a3e8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1204561456593732205, guid: 2cd0a77f86b3d51408ffd7a183d3a3e8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2cd0a77f86b3d51408ffd7a183d3a3e8, type: 3}
       propertyPath: m_Name
       value: Oficina(Prototipo)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2cd0a77f86b3d51408ffd7a183d3a3e8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1424622097766384518, guid: 2cd0a77f86b3d51408ffd7a183d3a3e8, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}

@@ -42,7 +42,8 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
-        _currentClientDisposition = clients[currentClientIndex].GetComponent<ClientInfo>().GetClientDisposition();
+        _currentClientDisposition = clients[0].GetComponent<ClientInfo>().clientDisposition;
+        Debug.Log(_currentClientDisposition);
 
         _currentClient = Instantiate(clients[currentClientIndex], startPosition, Quaternion.identity);
         StartCoroutine(MoveObject(midPosition));
@@ -55,9 +56,6 @@ public class LevelManager : MonoBehaviour
 
     void Update()
     {
-        if (currentClientIndex < clients.Length - 1)
-            _currentClientDisposition = clients[currentClientIndex].GetComponent<ClientInfo>().GetClientDisposition();
-
         if (_isSelectingMask)
         {
             currentTimeToSelect += Time.deltaTime;
@@ -115,6 +113,7 @@ public class LevelManager : MonoBehaviour
                 string picked = GetRandomOption(dispositions);
                 _currentClient.GetComponent<ClientInfo>().clientDisposition = picked;
                 Debug.Log(picked);
+                _currentClientDisposition = picked;
                 _clientStoppedMoving = false;
                 StartCoroutine(MoveObject(midPosition));
             }
