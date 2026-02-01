@@ -29,16 +29,15 @@ public class UIManager : MonoBehaviour
     
     public void FlipPages()
     {
-        if (paperHolder.childCount != 2)
-        {
-            Debug.LogWarning("FlipChildrenOrder expects exactly 2 children.");
-            return;
-        }
-
         Transform first = paperHolder.GetChild(0);
         Transform second = paperHolder.GetChild(1);
 
         first.SetSiblingIndex(1);
         second.SetSiblingIndex(0);
+    }
+
+    public void DisablePages()
+    {
+        paperHolder.gameObject.SetActive(false);
     }
 }
