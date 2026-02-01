@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: a22a4953579078246bf43a2ff1814054, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a22a4953579078246bf43a2ff1814054, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a22a4953579078246bf43a2ff1814054, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a22a4953579078246bf43a2ff1814054, type: 3}
       propertyPath: m_LocalPosition.x
@@ -78,7 +78,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a22a4953579078246bf43a2ff1814054, type: 3}
       propertyPath: m_Name
-      value: WomanHappy
+      value: Woman
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: a22a4953579078246bf43a2ff1814054, type: 3}
       propertyPath: m_Controller
@@ -90,7 +90,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a22a4953579078246bf43a2ff1814054, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7675835699098161547}
+      addedObject: {fileID: -1543874080490869175}
     - targetCorrespondingSourceObject: {fileID: 8304175215116285622, guid: a22a4953579078246bf43a2ff1814054, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4487520197584702852}
@@ -100,7 +100,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a22a4953579078246bf43a2ff1814054, type: 3}
   m_PrefabInstance: {fileID: 982124662625000570}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7675835699098161547
+--- !u!114 &-1543874080490869175
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -112,7 +112,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfc016bc6260e46df801a13bacbbe94d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClientInfo
-  clientDisposition: happy
+  clientDisposition: angry
+  sex: F
+  percentageSuccesfulLoans: 0
+  income: 0
+  expenses: 0
+  charName: 
 --- !u!4 &116982247239981055 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 882335638797273989, guid: a22a4953579078246bf43a2ff1814054, type: 3}

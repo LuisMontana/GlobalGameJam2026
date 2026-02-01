@@ -43,9 +43,9 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         _currentClientDisposition = clients[0].GetComponent<ClientInfo>().clientDisposition;
-        Debug.Log(_currentClientDisposition);
 
         _currentClient = Instantiate(clients[currentClientIndex], startPosition, Quaternion.identity);
+        GenerateRandomUserStats();
         StartCoroutine(MoveObject(midPosition));
     }
 
@@ -91,6 +91,41 @@ public class LevelManager : MonoBehaviour
 
         OnArrived(isExit);
     }
+    
+    private void GenerateRandomUserStats()
+    {
+        string[] dispositions = { "happy", "neutral", "angry" };
+        
+        string[] femaleNames =
+        {
+            "Alice", "Sofia", "Emma", "Luna", "Isabella",
+            "Mia", "Olivia", "Ava", "Camila", "Valentina",
+            "Zoe", "Chloe", "Natalia", "Lucia", "Elena",
+            "Aria", "Nora", "Julia", "Clara", "Victoria"
+        };
+
+        string[] maleNames =
+        {
+            "Liam", "Noah", "Lucas", "Mateo", "Ethan",
+            "Oliver", "Leo", "Daniel", "Sebastian", "Gabriel",
+            "David", "Samuel", "Adrian", "Alex", "Julian",
+            "Benjamin", "Aaron", "Diego", "Oscar", "Max"
+        };
+        
+        string picked = GetRandomOption(dispositions);
+        ClientInfo cf = _currentClient.GetComponent<ClientInfo>();
+        cf.clientDisposition = picked;
+        
+        cf.expenses = Random.Range(1, 100);
+        cf.income = Random.Range(1, 100);
+        cf.percentageSuccesfulLoans = Random.Range(1, 100);
+        cf.charName = cf.sex == "F"
+            ? femaleNames[Random.Range(0, femaleNames.Length)]
+            : maleNames[Random.Range(0, maleNames.Length)];
+        cf.gameObject.name = cf.charName;
+        
+        _currentClientDisposition = picked;
+    }
 
     private void OnArrived(bool isExit = false)
     {
@@ -109,11 +144,7 @@ public class LevelManager : MonoBehaviour
             {
                 Destroy(_currentClient);
                 _currentClient = Instantiate(clients[currentClientIndex], startPosition, Quaternion.identity);
-                string[] dispositions = { "happy", "neutral", "angry" };
-                string picked = GetRandomOption(dispositions);
-                _currentClient.GetComponent<ClientInfo>().clientDisposition = picked;
-                Debug.Log(picked);
-                _currentClientDisposition = picked;
+                GenerateRandomUserStats();
                 _clientStoppedMoving = false;
                 StartCoroutine(MoveObject(midPosition));
             }
