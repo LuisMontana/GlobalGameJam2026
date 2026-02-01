@@ -826,7 +826,7 @@ MonoBehaviour:
   VistsJugdr:
   - idVist: Normal
     orientcnVist: {x: 0, y: 0, z: 0}
-    poscnVist: {x: 14, y: -1.96, z: 43}
+    poscnVist: {x: 10, y: -1.96, z: 43}
   - idVist: Ver Mascaras
     orientcnVist: {x: 40, y: 2.5, z: 0}
     poscnVist: {x: 7.55, y: -0.8, z: 43.5}
