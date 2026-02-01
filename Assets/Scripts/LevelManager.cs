@@ -26,24 +26,24 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private float currentTimeToSelect = 0.0f;
     private bool _isShaking = false;
     private bool _isSelectingMask = false;
-    
+
     private float _currentStress = 0f;
     private const float MaxStress = 1f;
     private int negativeAnswersInRow = 0;
     private int positiveAnswersInRow = 0;
-    
-    
+
+
     private int currentClientIndex = 0;
     private string _currentClientDisposition;
     private GameObject _currentClient;
-    
+
 
     private bool _clientStoppedMoving;
-    
+
     void Start()
     {
         _currentClientDisposition = clients[0].GetComponent<ClientInfo>().GetClientDisposition();
-        
+
         _currentClient = Instantiate(clients[currentClientIndex], startPosition, Quaternion.identity);
         StartCoroutine(MoveObject(midPosition));
     }
@@ -52,7 +52,7 @@ public class LevelManager : MonoBehaviour
     {
         return options[Random.Range(0, options.Length)];
     }
-    
+
     void Update()
     {
         if (_isSelectingMask)
@@ -85,7 +85,7 @@ public class LevelManager : MonoBehaviour
 
             yield return null;
         }
-       
+
         _currentClient.transform.position = target;
 
         OnArrived(isExit);
@@ -119,7 +119,18 @@ public class LevelManager : MonoBehaviour
             uiManager.ToggleMaskButtons(true);
         }
     }
-    
+
+    public void updateStressValue(float value)//La variable value debe ser un número real entre [-1,1]
+    {
+        if (value > -1 && value < 1) {
+            _currentStress += value;
+        }
+
+    }
+    public float getStressValue()
+    {
+        return _currentStress;
+    } //Getter de la variable _currentStress
 
     public void CheckCompatibility(string userDisposition)
     {
@@ -136,6 +147,7 @@ public class LevelManager : MonoBehaviour
             if (positiveAnswersInRow > 0) positiveAnswersInRow = 0;
             float stressIncrease = negativeAnswersInRow > 2 ? multiIncreaseValue : singleIncreaseValue;
             _currentStress += stressIncrease;
+            
         }
         
         uiManager.UpdateStressBar(_currentStress);
