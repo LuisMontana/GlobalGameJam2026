@@ -34,8 +34,10 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI incomeText;
     [SerializeField] private TextMeshProUGUI expensesText;
     [SerializeField] private TextMeshProUGUI percentageText;
-    
-    
+
+    public AudioClip[] SFX;
+    public AudioSource sourceSFX;
+
     private float _currentStress = 0f;
     private const float MaxStress = 1f;
     private int negativeAnswersInRow = 0;
@@ -187,6 +189,7 @@ public class LevelManager : MonoBehaviour
     public void TogglePaper()
     {
         paperHolder.SetActive(!paperHolder.activeSelf);
+        PlaySFX(0);
     }
     
     public float getStressValue()
@@ -266,5 +269,11 @@ public class LevelManager : MonoBehaviour
         _isShaking = false;
         camShaker.StopShake();
         StartCoroutine(MoveObject(endPosition, true));
+    }
+
+    public void PlaySFX(int soundIndex)
+    {
+        sourceSFX.PlayOneShot(SFX[soundIndex]);
+        Debug.Log("You're hearing: ", SFX[soundIndex]);
     }
 }
