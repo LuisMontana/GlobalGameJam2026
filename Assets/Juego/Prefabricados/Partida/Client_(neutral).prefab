@@ -286,7 +286,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1a958def054e3c34b94d29ae0c6496d3, type: 3}
       propertyPath: m_Name
-      value: Jugador
+      value: Client_(neutral)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1a958def054e3c34b94d29ae0c6496d3, type: 3}
       propertyPath: m_Layer
@@ -511,9 +511,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1a958def054e3c34b94d29ae0c6496d3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5364487181243397350}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1a958def054e3c34b94d29ae0c6496d3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2795939812980875801}
     - targetCorrespondingSourceObject: {fileID: 8304175215116285622, guid: 1a958def054e3c34b94d29ae0c6496d3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5964262594838677380}
@@ -521,11 +518,6 @@ PrefabInstance:
 --- !u!137 &848900834548230321 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 5197118176682910397, guid: 1a958def054e3c34b94d29ae0c6496d3, type: 3}
-  m_PrefabInstance: {fileID: 4888720881774135820}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1347328442448623517 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 1a958def054e3c34b94d29ae0c6496d3, type: 3}
   m_PrefabInstance: {fileID: 4888720881774135820}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2501172345343286815 stripped
@@ -1342,21 +1334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfc016bc6260e46df801a13bacbbe94d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClientInfo
-  clientDisposition: 
---- !u!114 &2795939812980875801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5699675229947934557}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f40efc8f8001cbf4b8c3b0fe823b73e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ikPersonaje
-  Animador: {fileID: 1347328442448623517}
-  IKs_Esqlt: []
+  clientDisposition: neutral
 --- !u!4 &5757454286124695945 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 882335638797273989, guid: 1a958def054e3c34b94d29ae0c6496d3, type: 3}
